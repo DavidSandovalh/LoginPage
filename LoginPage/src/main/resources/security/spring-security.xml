@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+		xmlns="http://www.springframework.org/schema/security"
+		xmlns:beans="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.springframework.org/schema/security"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+		
+
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/resources/**" access="permitAll"/>
+	    <intercept-url pattern="/login"   access="permitAll"/>
+	    <intercept-url pattern="/exit"   access="permitAll"/>
+	    <access-denied-handler error-page="/denied"/>
+	    
+	    <intercept-url pattern="/adminSistemas"	access="hasRole('ROLE_ADMIN_SISTEMAS')" />
+	    <intercept-url pattern="/**" access="isAuthenticated()" /> 
+		<csrf disabled="true" />
+		
+		<form-login
+			login-page="/login"
+			authentication-failure-url="/exit"
+			authentication-success-handler-ref="myAuthenticationSuccessHandler"
+			username-parameter="usuario"
+			password-parameter="clave"
+			login-processing-url="/perform_login"
+			authentication-failure-handler-ref="myURLAuthenticationFailureHandler"
+		/>
+		
+		<session-management session-fixation-protection="none"/>
+		
+	</http>
+	
+	<beans:bean id="myAuthenticationSuccessHandler"
+       class="com.login.usuarios.security.MyUrlAuthenticationSuccessHandler" />
+    
+    <beans:bean id="myURLAuthenticationFailureHandler"
+	   class="com.login.usuarios.security.MyURLAuthenticationFailureHandler" />
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="customAuthenticationProvider"/>
+	</authentication-manager> 
+</beans:beans>

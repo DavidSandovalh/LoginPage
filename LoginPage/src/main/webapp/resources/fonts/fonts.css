@@ -1,0 +1,24 @@
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url("resources/fonts/Montserrat-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Montserrat-SemiBold;
+    src: url("resources/fonts/Montserrat-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url("resources/fonts/Montserrat-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url("resources/fonts/Montserrat-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url("resources/fonts/Montserrat-ExtraBold.otf") format("opentype");
+}

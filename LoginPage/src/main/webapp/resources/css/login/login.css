@@ -1,0 +1,47 @@
+
+:root{
+	--colorGris : #c0cadc;
+	--colorInput: ##d8e1ef;
+	
+	--sixe11 : 11px;
+	--sixe12 : 12px;
+	
+}
+
+.colorLetras{
+	font-size: 15px;
+    color: #c0cadc;
+    font-weight: 600;
+}
+
+.colorInput{
+	color: var(--colorInput);
+}
+
+.logo{
+	margin-top: 40%;
+}
+
+.inicia{
+	margin-top:30%;
+	font-weight: 600;
+    font-size: 20px;
+}
+
+.email{
+	margin-top: 4%;
+}
+
+.credencial{
+	margin-top: 7%;
+}
+
+.iniciaSession{
+	margin-top: 25%;
+}
+
+.mensaje{
+	margin-top: 8%;
+	font-size: var(--sixe12);
+}
+

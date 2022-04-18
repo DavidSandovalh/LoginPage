@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.login.usuarios.dao.AdminSistemasDAO">
+
+	<select id="consulta_Administradores" resultType="java.util.Map">
+		select
+			duo.LOGIN as duo_user_name ,
+			duo.CLIENTE as numEmpleado,
+			duo.PASS credencial,
+			duo.NOMBRE as nombre,
+			duo.APELLIDO_PATERNO||' '||duo.APELLIDO_MATERNO as apellido,
+			duo.AREA as rol,
+			duo.EMAIL as email,
+			to_char(duo.FECHAALTA,'DD/MM/YYYY HH:mm:SS') FECHAALTA,
+			duo.FECHABAJA,
+			duo.STATUS,
+			duo.INTENTOS,
+			duo.FECHAREVOCADO,
+			duo.FECHA_VIGENCIA,
+			duo.NO_ACCESO,
+			duo.FECHAMODIFICACION
+	  		
+		    from USUARIO_LOGIN duo
+	</select>
+	
+	<select id="consulta_Usu_estatus" resultType="java.util.Map" parameterType="java.lang.String">
+		select
+			duo.LOGIN as duo_user_name ,
+			duo.CLIENTE as numEmpleado,
+			duo.PASS credencial,
+			duo.NOMBRE as nombre,
+			duo.APELLIDO_PATERNO||' '||duo.APELLIDO_MATERNO as apellido,
+			duo.AREA as rol,
+			duo.EMAIL as email,
+			to_char(duo.FECHAALTA,'DD/MM/YYYY HH:mm:SS') FECHAALTA,
+			duo.FECHABAJA,
+			duo.STATUS,
+			duo.INTENTOS,
+			duo.FECHAREVOCADO,
+			duo.FECHA_VIGENCIA,
+			duo.NO_ACCESO,
+			duo.FECHAMODIFICACION
+	  		
+		    from USUARIO_LOGIN duo
+		    where duo.STATUS = #{status}
+	</select>
+	
+	<select id="consultar_info_administrador_id"
+		resultType="java.util.Map" parameterType="java.lang.String">
+		select
+			duo.LOGIN as duo_user_name ,
+			duo.CLIENTE as numEmpleado,
+			duo.PASS credencial,
+			duo.NOMBRE as nombre,
+			duo.APELLIDO_PATERNO||' '||duo.APELLIDO_MATERNO as apellido,
+			duo.AREA as rol,
+			duo.EMAIL as email,
+			to_char(duo.FECHAALTA,'DD/MM/YYYY HH:mm:SS') FECHAALTA,
+			duo.FECHABAJA,
+			duo.STATUS,
+			duo.INTENTOS,
+			duo.FECHAREVOCADO,
+			duo.FECHA_VIGENCIA,
+			duo.NO_ACCESO,
+			duo.FECHAMODIFICACION
+	  		
+		    from USUARIO_LOGIN duo
+		    where duo.LOGIN = #{dUO_ID}
+	</select>
+	
+	<delete id="baja_usuario" parameterType="java.lang.String">
+		DELETE FROM USUARIO_LOGIN WHERE LOGIN = #{login}
+	</delete>
+
+</mapper>
